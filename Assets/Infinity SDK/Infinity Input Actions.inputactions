@@ -1,0 +1,211 @@
+{
+    "version": 1,
+    "name": "Infinity Input Actions",
+    "maps": [
+        {
+            "name": "Headset",
+            "id": "e2926454-73f7-4ecb-8b40-295e2dfec3b2",
+            "actions": [
+                {
+                    "name": "Position",
+                    "type": "Value",
+                    "id": "227ae105-4c0e-4e1d-aef0-09de878f9d82",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Rotation",
+                    "type": "Value",
+                    "id": "5a717271-d944-479a-b476-291630e8e849",
+                    "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Tracking",
+                    "type": "Value",
+                    "id": "efe05d3b-d99c-4321-b829-f1c86bdfa4b2",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "193a12fd-0773-479e-a298-c939e1c5ad9f",
+                    "path": "<XRHMD>/devicePosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a041e8ec-8d81-4b51-a156-88d2529911c7",
+                    "path": "<XRHMD>/deviceRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7763630d-33d2-4c47-b960-a03b710283fa",
+                    "path": "<XRHMD>/trackingState",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tracking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Left Controller",
+            "id": "56e315af-c83e-417d-a23c-2c59052048c5",
+            "actions": [
+                {
+                    "name": "Position",
+                    "type": "Value",
+                    "id": "37d332a5-cdbb-4a35-b580-ba2f3afe25d5",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Rotation",
+                    "type": "Value",
+                    "id": "73896080-128c-47f8-b1ae-42e18f07f2be",
+                    "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Tracking",
+                    "type": "Value",
+                    "id": "a9f0a7c5-35b6-4091-8203-7f3ebdaa6f04",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2ce878e1-68e7-4ecb-a7d5-db7681bed5c5",
+                    "path": "<XRController>{LeftHand}/devicePosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "703e39e8-d8c4-4dd9-ab93-9d822d83224f",
+                    "path": "<XRController>{LeftHand}/deviceRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb9e79e6-18a8-4246-b188-bb9ab1cbab5f",
+                    "path": "<XRController>{LeftHand}/trackingState",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tracking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Right Controller",
+            "id": "0ff58d8e-757b-4fe1-8873-a35e853181b0",
+            "actions": [
+                {
+                    "name": "Position",
+                    "type": "Value",
+                    "id": "8ea96d97-462e-4692-b804-134a00960d30",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Rotation",
+                    "type": "Value",
+                    "id": "a8e3622c-d6eb-4af5-907f-a5c47f561533",
+                    "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Tracking",
+                    "type": "Value",
+                    "id": "fef2a1c2-225b-4326-a6d6-cb1a81ee4d4e",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1550aed0-5895-4ab7-b9ad-b10083678a4e",
+                    "path": "<XRController>{RightHand}/devicePosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be640327-f0e8-47f3-b8f4-d86590dea18a",
+                    "path": "<XRController>{RightHand}/deviceRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4bf4e6e6-2daf-494a-9fe6-a97bc9744539",
+                    "path": "<XRController>{RightHand}/trackingState",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tracking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
