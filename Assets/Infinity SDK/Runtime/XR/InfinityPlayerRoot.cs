@@ -15,6 +15,9 @@ namespace Infinity.Runtime.XR
         public Transform remoteLeftController;
         public Transform remoteRightController;
 
+        public MeshRenderer leftControllerRenderer;
+        public MeshRenderer rightControllerRenderer;
+        
         public override void OnNetworkSpawn()
         {
             if (!IsOwner)

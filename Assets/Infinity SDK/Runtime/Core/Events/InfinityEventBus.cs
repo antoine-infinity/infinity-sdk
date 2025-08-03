@@ -29,5 +29,14 @@ namespace Infinity.Runtime.Core.Events
 
             Handlers[eventType].Add(handler);
         }
+
+        public static void Unsubscribe<T>(Action<T> handler) where T : class
+        {
+            var eventType = typeof(T);
+            if (Handlers.TryGetValue(eventType, out var handlers))
+            {
+                handlers.Remove(handler);
+            }
+        }
     }
 }
