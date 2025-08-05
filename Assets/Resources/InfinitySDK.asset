@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3114c2c3c8f949bb9ddff381198ee31f, type: 3}
+  m_Name: InfinitySDK
+  m_EditorClassIdentifier: 
+  readSettingsFrom: 0
+  logSettingAfterInit: 1
+  instanceType: 0
+  playAreaSize: 1
+  serverIp: 192.168.129.203
+  serverPort: 7778
+  firstScene: Assets/Scenes/Lobby.unity
+  dualScreen: 0
+  autoStart: 1
+  autoStop: 1
+  autoStopTimer: 15
+  difficulty: 1
+  skipEnabled: 1
+  hintEnabled: 1
+  duration: 3600
