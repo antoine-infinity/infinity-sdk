@@ -11,7 +11,7 @@ namespace Infinity.Runtime.XR.Interactions.Interactors
     public class Grabber : MonoBehaviour
     {
         public Handedness handedness;
-        public InputAction grabAction;
+        public InputActionReference grabAction;
 
         public Collider grabCollider;
         public float grabThreshold;
@@ -69,21 +69,25 @@ namespace Infinity.Runtime.XR.Interactions.Interactors
                     ? _playerRoot.rightControllerRenderer
                     : _playerRoot.leftControllerRenderer;
 
-                // Reparent the grabber to the correct controller
-                transform.SetParent((handedness & Handedness.Right) != 0
-                    ? _playerRoot.localRightController
-                    : _playerRoot.localLeftController);
+                if (reparentToPlayer)
+                {
+                    // Reparent the grabber to the correct controller
+                    transform.SetParent((handedness & Handedness.Right) != 0
+                        ? _playerRoot.localRightController
+                        : _playerRoot.localLeftController);
+                }
             }
         }
 
         private void HandleInput()
         {
-            isGrabbing = grabAction.ReadValue<float>() >= grabThreshold;
+            isGrabbing = grabAction.action.ReadValue<float>() >= grabThreshold;
         }
 
         private void HandleRenderer()
         {
-            _controllerRenderer.enabled = !disableRendererOnGrab || !isGrabbing;
+            if(_controllerRenderer != null)
+                _controllerRenderer.enabled = !disableRendererOnGrab || !isGrabbing;
         }
 
         private void ProcessGrab()

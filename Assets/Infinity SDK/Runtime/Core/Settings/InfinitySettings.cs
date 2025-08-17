@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
 using Infinity.Runtime.Core.Logging;
 using Infinity.Runtime.Utils;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 namespace Infinity.Runtime.Core.Settings
 {
@@ -10,11 +10,13 @@ namespace Infinity.Runtime.Core.Settings
     {
         public static BaseSettings Base;
         public static GameSettings Game;
+        public static LocaleSettings Locale;
 
         public static void Initialize()
         {
             Base = new BaseSettings();
             Game = new GameSettings();
+            Locale = new LocaleSettings();
 
             switch (InfinitySDK.Properties.readSettingsFrom)
             {
@@ -51,6 +53,10 @@ namespace Infinity.Runtime.Core.Settings
             Game.SkipEnabled.Value = InfinitySDK.Properties.skipEnabled;
             Game.HintEnabled.Value = InfinitySDK.Properties.hintEnabled;
             Game.Duration.Value = InfinitySDK.Properties.duration;
+
+            Locale.DefaultLocale.Value = InfinitySDK.Properties.defaultLocale;
+            Locale.TextLocale.Value = InfinitySDK.Properties.textLocale;
+            Locale.AudioLocale.Value = InfinitySDK.Properties.audioLocale;
         }
 
         private static void InitializeFromPlayerPrefs()
@@ -71,6 +77,10 @@ namespace Infinity.Runtime.Core.Settings
             Game.SkipEnabled.Value = PlayerPrefs.GetInt(Game.SkipEnabled.SettingKey, 0) != 0;
             Game.HintEnabled.Value = PlayerPrefs.GetInt(Game.HintEnabled.SettingKey, 0) != 0;
             Game.Duration.Value = PlayerPrefs.GetFloat(Game.Duration.SettingKey, 3600);
+            
+            Locale.DefaultLocale.Value = PlayerPrefs.GetString(Locale.DefaultLocale.SettingKey, "en-US");
+            Locale.TextLocale.Value = PlayerPrefs.GetString(Locale.TextLocale.SettingKey, "en-US");
+            Locale.AudioLocale.Value = PlayerPrefs.GetString(Locale.AudioLocale.SettingKey, "en-US");
         }
 
         private static void InitializeFromAndroidGlobalSettings()
@@ -94,6 +104,10 @@ namespace Infinity.Runtime.Core.Settings
             Game.SkipEnabled.Value = AndroidSettingFetcher.FetchBool(Game.SkipEnabled.SettingKey, false);
             Game.HintEnabled.Value = AndroidSettingFetcher.FetchBool(Game.HintEnabled.SettingKey, true);
             Game.Duration.Value = AndroidSettingFetcher.FetchFloat(Game.Duration.SettingKey, 3600);
+            
+            Locale.DefaultLocale.Value = AndroidSettingFetcher.Fetch(Locale.DefaultLocale.SettingKey, "en-US");
+            Locale.TextLocale.Value = AndroidSettingFetcher.Fetch(Locale.TextLocale.SettingKey, "en-US");
+            Locale.AudioLocale.Value = AndroidSettingFetcher.Fetch(Locale.AudioLocale.SettingKey, "en-US");
 #else
             InfinityLog.Warning(typeof(InfinitySettings),
                 $"Trying to initialize settings from Android Global Settings on a non Android platform. Using default values....");
@@ -143,6 +157,18 @@ namespace Infinity.Runtime.Core.Settings
         public override string ToString()
         {
             return $"{Difficulty}\n{SkipEnabled}\n{HintEnabled}\n{Duration}";
+        }
+    }
+
+    public class LocaleSettings
+    {
+        public InfinitySettingEntry<string> DefaultLocale = new("default_locale", "en-US");
+        public InfinitySettingEntry<string> TextLocale = new("text_locale", "en-US");
+        public InfinitySettingEntry<string> AudioLocale = new("audio_locale", "en-US");
+
+        public override string ToString()
+        {
+            return $"{DefaultLocale}\n{TextLocale}\n{AudioLocale}";
         }
     }
 }

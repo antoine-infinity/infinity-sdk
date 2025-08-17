@@ -7,6 +7,8 @@ using Infinity.Runtime.Core.Events;
 using Infinity.Runtime.Core.Logging;
 using Infinity.Runtime.Core.Session;
 using Infinity.Runtime.Core.Settings;
+using Infinity.Runtime.Localization;
+using Infinity.Runtime.Networking;
 using Infinity.Runtime.Utils;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
@@ -30,7 +32,27 @@ namespace Infinity.Runtime.Core
         }
 
         public static InfinitySDKProperties Properties { get; private set; }
+        
+        public static void Initialize()
+        {
+            SessionState = InfinityEnums.Core.SessionState.Launching;
 
+            InfinityLog.Info(typeof(InfinitySDK), "Initializing Infinity SDK");
+
+            InitializePropertiesScriptable();
+
+            InfinitySettings.Initialize();
+            InfinityLocalization.Initialize();
+            InfinityNetworkManager.Initialize();
+            
+            if (Properties.logSettingAfterInit) InfinitySettings.DisplaySettings();
+
+            SessionState = InfinityEnums.Core.SessionState.Initialized;
+        }
+        
+        #region Session Control
+        
+        #region Public
         public static void SetSessionState(InfinityEnums.Core.SessionState state)
         {
             switch (sessionState)
@@ -54,22 +76,6 @@ namespace Infinity.Runtime.Core
             InfinityLog.Info(typeof(InfinitySDK), $"Session state is set to {state}.");
             SessionState = sessionState;
         }
-
-        public static void Initialize()
-        {
-            SessionState = InfinityEnums.Core.SessionState.Launching;
-
-            InfinityLog.Info(typeof(InfinitySDK), "Initializing Infinity SDK");
-
-            InitializePropertiesScriptable();
-
-            InfinitySettings.Initialize();
-            
-            if (Properties.logSettingAfterInit) InfinitySettings.DisplaySettings();
-
-            SessionState = InfinityEnums.Core.SessionState.Initialized;
-        }
-
         public static void StartNetworkSession()
         {
             // Determine network type
@@ -90,7 +96,32 @@ namespace Infinity.Runtime.Core
 
             SessionState = InfinityEnums.Core.SessionState.NetworkStarted;
         }
+        public static void StopSession()
+        {
+            SessionState = InfinityEnums.Core.SessionState.Exiting;
 
+            InfinityLog.Info(typeof(InfinitySDK), $"Stopping session");
+
+            StaticCoroutine.Start(StopProcess());
+            return;
+
+            IEnumerator StopProcess()
+            {
+                NetworkManager.Singleton.Shutdown(true);
+                yield return new WaitUntil(() => !NetworkManager.Singleton.ShutdownInProgress);
+
+                InfinityLog.Info(typeof(InfinitySDK), $"Network manager is shut down, the application will now exit.");
+
+#if UNITY_EDITOR
+                EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+            }
+        }
+        #endregion
+        
+        #region Private
         private static void StartServerSession()
         {
             var localIp = GetLocalIPAddress();
@@ -123,31 +154,11 @@ namespace Infinity.Runtime.Core
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(localIp, serverPort);
             NetworkManager.Singleton.StartHost();
         }
-
-        public static void StopSession()
-        {
-            SessionState = InfinityEnums.Core.SessionState.Exiting;
-
-            InfinityLog.Info(typeof(InfinitySDK), $"Stopping session");
-
-            StaticCoroutine.Start(StopProcess());
-            return;
-
-            IEnumerator StopProcess()
-            {
-                NetworkManager.Singleton.Shutdown(true);
-                yield return new WaitUntil(() => !NetworkManager.Singleton.ShutdownInProgress);
-
-                InfinityLog.Info(typeof(InfinitySDK), $"Network manager is shut down, the application will now exit.");
-
-#if UNITY_EDITOR
-                EditorApplication.isPlaying = false;
-#else
-                Application.Quit();
-#endif
-            }
-        }
-
+        #endregion
+        
+        #endregion
+        
+        #region Utilities
         private static string GetLocalIPAddress()
         {
             var entry = Dns.GetHostEntry(Dns.GetHostName());
@@ -161,7 +172,6 @@ namespace Infinity.Runtime.Core
 
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
-
         private static void InitializePropertiesScriptable()
         {
             var props = Resources.Load<InfinitySDKProperties>("InfinitySDK");
@@ -182,5 +192,6 @@ namespace Infinity.Runtime.Core
             InfinityLog.Info(typeof(InfinitySDK), $"Infinity SDK Properties loaded");
             Properties = props;
         }
+        #endregion
     }
 }

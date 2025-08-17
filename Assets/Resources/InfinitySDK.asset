@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readSettingsFrom: 0
   logSettingAfterInit: 1
-  instanceType: 0
-  playAreaSize: 1
-  serverIp: 192.168.129.203
+  instanceType: 1
+  serverIp: 192.168.129.19
   serverPort: 7778
+  playAreaSize: 1
   firstScene: Assets/Scenes/Lobby.unity
   dualScreen: 0
-  autoStart: 1
-  autoStop: 1
+  autoStart: 0
+  autoStop: 0
   autoStopTimer: 15
   difficulty: 1
   skipEnabled: 1

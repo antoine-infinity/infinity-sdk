@@ -1,7 +1,5 @@
 using System.Collections;
 using Infinity.Runtime.Core;
-using Infinity.Runtime.Core.Logging;
-using Infinity.Runtime.Core.Session;
 using Infinity.Runtime.Core.Settings;
 using Unity.Netcode;
 using UnityEngine;
