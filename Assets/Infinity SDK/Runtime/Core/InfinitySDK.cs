@@ -19,15 +19,15 @@ namespace Infinity.Runtime.Core
 {
     public static class InfinitySDK
     {
-        private static InfinityEnums.Core.SessionState sessionState;
+        private static InfinityEnums.Core.SessionState _sessionState;
 
         public static InfinityEnums.Core.SessionState SessionState
         {
-            get => sessionState;
+            get => _sessionState;
             private set
             {
-                InfinityEventBus.Publish(new InfinitySessionStateChangeEvent(sessionState, value));
-                sessionState = value;
+                InfinityEventBus.Publish(new InfinitySessionStateChangeEvent(_sessionState, value));
+                _sessionState = value;
             }
         }
 
@@ -55,7 +55,7 @@ namespace Infinity.Runtime.Core
         #region Public
         public static void SetSessionState(InfinityEnums.Core.SessionState state)
         {
-            switch (sessionState)
+            switch (_sessionState)
             {
                 case InfinityEnums.Core.SessionState.Launching:
                 case InfinityEnums.Core.SessionState.Initialized:
@@ -74,7 +74,7 @@ namespace Infinity.Runtime.Core
             }
 
             InfinityLog.Info(typeof(InfinitySDK), $"Session state is set to {state}.");
-            SessionState = sessionState;
+            SessionState = _sessionState;
         }
         public static void StartNetworkSession()
         {
@@ -95,6 +95,12 @@ namespace Infinity.Runtime.Core
             }
 
             SessionState = InfinityEnums.Core.SessionState.NetworkStarted;
+        }
+
+        public static void StartSession()
+        {
+            SessionState = InfinityEnums.Core.SessionState.Lobby;
+            InfinityLog.Info(typeof(InfinitySDK), "Starting Session");
         }
         public static void StopSession()
         {

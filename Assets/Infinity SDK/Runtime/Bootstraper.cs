@@ -26,6 +26,12 @@ namespace Infinity.Runtime
                 NetworkManager.Singleton.SceneManager.LoadScene(InfinitySettings.Base.FirstScene.Value,
                     LoadSceneMode.Single);
             }
+
+            InfinitySDK.StartSession();
+
+            yield return new WaitForSeconds(4);
+            
+            InfinitySDK.StopSession();
         }
     }
 }

@@ -1,6 +1,9 @@
 {
-  "settings": "Settings",
-  "main_menu": "Main Menu",
-  "session.start": "Start Session",
-  "session.stop": "Stop Session"
+  "locale": "en-US",
+  "entries": [
+    {
+      "key":  "settings",
+      "value" : "Settings"
+    }
+  ]
 }

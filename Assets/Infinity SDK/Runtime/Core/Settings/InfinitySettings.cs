@@ -21,7 +21,8 @@ namespace Infinity.Runtime.Core.Settings
             switch (InfinitySDK.Properties.readSettingsFrom)
             {
                 case SettingsSource.ScriptableObject:
-                    InfinityLog.Info(typeof(InfinitySettings), $"Initializing settings from properties scriptable object.");
+                    InfinityLog.Info(typeof(InfinitySettings),
+                        $"Initializing settings from properties scriptable object.");
                     InitializeFromScriptable();
                     break;
                 case SettingsSource.PlayerPrefs:
@@ -37,6 +38,7 @@ namespace Infinity.Runtime.Core.Settings
             }
         }
 
+        #region Initialization
         private static void InitializeFromScriptable()
         {
             Base.InstanceType.Value = InfinitySDK.Properties.instanceType;
@@ -77,7 +79,7 @@ namespace Infinity.Runtime.Core.Settings
             Game.SkipEnabled.Value = PlayerPrefs.GetInt(Game.SkipEnabled.SettingKey, 0) != 0;
             Game.HintEnabled.Value = PlayerPrefs.GetInt(Game.HintEnabled.SettingKey, 0) != 0;
             Game.Duration.Value = PlayerPrefs.GetFloat(Game.Duration.SettingKey, 3600);
-            
+
             Locale.DefaultLocale.Value = PlayerPrefs.GetString(Locale.DefaultLocale.SettingKey, "en-US");
             Locale.TextLocale.Value = PlayerPrefs.GetString(Locale.TextLocale.SettingKey, "en-US");
             Locale.AudioLocale.Value = PlayerPrefs.GetString(Locale.AudioLocale.SettingKey, "en-US");
@@ -104,71 +106,21 @@ namespace Infinity.Runtime.Core.Settings
             Game.SkipEnabled.Value = AndroidSettingFetcher.FetchBool(Game.SkipEnabled.SettingKey, false);
             Game.HintEnabled.Value = AndroidSettingFetcher.FetchBool(Game.HintEnabled.SettingKey, true);
             Game.Duration.Value = AndroidSettingFetcher.FetchFloat(Game.Duration.SettingKey, 3600);
-            
+
             Locale.DefaultLocale.Value = AndroidSettingFetcher.Fetch(Locale.DefaultLocale.SettingKey, "en-US");
             Locale.TextLocale.Value = AndroidSettingFetcher.Fetch(Locale.TextLocale.SettingKey, "en-US");
             Locale.AudioLocale.Value = AndroidSettingFetcher.Fetch(Locale.AudioLocale.SettingKey, "en-US");
 #else
             InfinityLog.Warning(typeof(InfinitySettings),
-                $"Trying to initialize settings from Android Global Settings on a non Android platform. Using default values....");
+                $"Trying to initialize settings from Android Global Settings on a non Android platform. Using scriptable values....");
+            InitializeFromScriptable();
 #endif
         }
-
+        #endregion
+        
         public static void DisplaySettings()
         {
             InfinityLog.Info(typeof(InfinitySettings), $"[Infinity Settings]\n\n{Base}\n\n{Game}");
-        }
-    }
-
-    public class BaseSettings
-    {
-        public InfinitySettingEntry<InfinityEnums.Core.InstanceType> InstanceType =
-            new("instance_type", InfinityEnums.Core.InstanceType.Server);
-
-        public InfinitySettingEntry<InfinityEnums.Core.PlayAreaSize> PlayAreaSize = new("play_area",
-            InfinityEnums.Core.PlayAreaSize.Area5X5);
-
-        public InfinitySettingEntry<string> ServerIp = new("server_ip", "127.0.0.1");
-        public InfinitySettingEntry<ushort> ServerPort = new("server_port", 7777);
-        public InfinitySettingEntry<string> FirstScene = new("first_scene", "Lobby");
-        public InfinitySettingEntry<bool> DualScreen = new("dual_screen", false);
-        public InfinitySettingEntry<bool> AutoStart = new("auto_start", true);
-        public InfinitySettingEntry<bool> AutoStop = new("auto_stop", true);
-        public InfinitySettingEntry<int> AutoStopTimer = new("auto_stop_timer", 15);
-
-        public override string ToString()
-        {
-            return
-                $"{PlayAreaSize}\n{ServerIp}\n{ServerPort}" +
-                $"\n{FirstScene}\n{DualScreen}\n{AutoStart}" +
-                $"\n{AutoStop}\n{AutoStopTimer}";
-        }
-    }
-
-    public class GameSettings
-    {
-        public InfinitySettingEntry<InfinityEnums.Game.Difficulty> Difficulty = new("difficulty",
-            InfinityEnums.Game.Difficulty.Normal);
-
-        public InfinitySettingEntry<bool> SkipEnabled = new("skip_enabled", false);
-        public InfinitySettingEntry<bool> HintEnabled = new("hint_enabled", true);
-        public InfinitySettingEntry<float> Duration = new("duration", 3600f);
-
-        public override string ToString()
-        {
-            return $"{Difficulty}\n{SkipEnabled}\n{HintEnabled}\n{Duration}";
-        }
-    }
-
-    public class LocaleSettings
-    {
-        public InfinitySettingEntry<string> DefaultLocale = new("default_locale", "en-US");
-        public InfinitySettingEntry<string> TextLocale = new("text_locale", "en-US");
-        public InfinitySettingEntry<string> AudioLocale = new("audio_locale", "en-US");
-
-        public override string ToString()
-        {
-            return $"{DefaultLocale}\n{TextLocale}\n{AudioLocale}";
         }
     }
 }

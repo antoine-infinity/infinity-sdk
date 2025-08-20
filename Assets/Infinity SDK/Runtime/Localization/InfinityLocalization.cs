@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Linq;
 using Infinity.Runtime.Core.Events;
 using Infinity.Runtime.Core.Logging;
 using Infinity.Runtime.Core.Settings;
@@ -11,8 +11,14 @@ namespace Infinity.Runtime.Localization
         public static string DefaultLocale => InfinitySettings.Locale.DefaultLocale.Value;
         public static string TextLocale => InfinitySettings.Locale.TextLocale.Value;
         public static string AudioLocale => InfinitySettings.Locale.AudioLocale.Value;
-        private static Dictionary<string, string> _loadedLocale = new();
+        private static LocaleFile _loadedLocale = new();
         
+        public static string Localize(string key)
+        {
+            return _loadedLocale.entries.FirstOrDefault(x => x.key.Equals(key))?.value;
+        }
+        
+        #region Initialization and Loading
         public static void Initialize()
         {
             InfinityLog.Info(typeof(InfinityLocalization), $"Initializing Localization");
@@ -28,11 +34,11 @@ namespace Infinity.Runtime.Localization
         {
             var file = Resources.Load<TextAsset>($"Localization/locale-{TextLocale}");
             InfinityLog.Info(typeof(InfinityLocalization), $"Loaded locale: {TextLocale} - {file.bytes.Length} bytes");
-            _loadedLocale = JsonUtility.FromJson<Dictionary<string, string>>(file.text);
-            
-            InfinityLog.Info(typeof(InfinityLocalization), Localize("session.start"));
+            _loadedLocale = JsonUtility.FromJson<LocaleFile>(file.text);
         }
+        #endregion
         
+        #region Change Event Publishing
         private static void DefaultLocaleChanged(string oldValue, string newValue)
         {
             InfinityEventBus.Publish(new LocaleChangedEvent(LocaleChangedEvent.LocaleChangedEventType.Default, 
@@ -48,31 +54,6 @@ namespace Infinity.Runtime.Localization
             InfinityEventBus.Publish(new LocaleChangedEvent(LocaleChangedEvent.LocaleChangedEventType.Audio, 
                 oldValue, newValue));
         }
-
-        public static string Localize(string key)
-        {
-            return _loadedLocale.GetValueOrDefault(key, key);
-        }
-    }
-
-    public class LocaleChangedEvent
-    {
-        public LocaleChangedEventType Type;
-        public string OldLocale;
-        public string NewLocale;
-
-        public LocaleChangedEvent(LocaleChangedEventType type, string oldLocale, string newLocale)
-        {
-            Type = type;
-            OldLocale = oldLocale;
-            NewLocale = newLocale;
-        }
-
-        public enum LocaleChangedEventType
-        {
-            Default,
-            Text,
-            Audio
-        }
+        #endregion
     }
 }
