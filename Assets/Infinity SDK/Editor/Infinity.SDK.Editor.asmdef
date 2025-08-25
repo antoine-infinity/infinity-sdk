@@ -1,0 +1,18 @@
+{
+    "name": "Infinity.SDK.Editor",
+    "rootNamespace": "Infinity",
+    "references": [
+        "GUID:92aa2dea4949a8b45861b62e9d0d8bee"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
