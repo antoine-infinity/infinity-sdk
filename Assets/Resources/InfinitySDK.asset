@@ -15,7 +15,7 @@ MonoBehaviour:
   readSettingsFrom: 0
   logSettingAfterInit: 1
   instanceType: 1
-  serverIp: 192.168.129.19
+  serverIp: 192.168.129.203
   serverPort: 7778
   playAreaSize: 1
   firstScene: Assets/Scenes/Lobby.unity
@@ -27,3 +27,6 @@ MonoBehaviour:
   skipEnabled: 1
   hintEnabled: 1
   duration: 3600
+  defaultLocale: en-US
+  textLocale: en-US
+  audioLocale: en-US

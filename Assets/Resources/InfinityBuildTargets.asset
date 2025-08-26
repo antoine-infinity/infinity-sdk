@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70142475f564a8a9b317b45032d37c1, type: 3}
+  m_Name: InfinityBuildTargets
+  m_EditorClassIdentifier: Infinity.SDK.Editor::InfinityBuildTargetList
+  currentVersion: 0.0.1
+  buildLocation: Builds/
+  buildSubfolderApk: apk/
+  buildSubfolderWin: win/
+  targets:
+  - targetName: Meta
+    targetActive: 1
+    target: 13
+    targetBuildProfile: {fileID: 11400000, guid: 9d52fbd858a163943b017f5e025a9d18, type: 2}
+    customManifest: {fileID: 4900000, guid: 28d2e849c4924649bd10e95e7fd02891, type: 3}
+    customGraddle: {fileID: 0}
+    lastBuildTime: 08/26/2025 23:01:49
+    lastBuildResult: 1
+    lastBuildVersion: 0.0.1_13
+  - targetName: Pico
+    targetActive: 0
+    target: 13
+    targetBuildProfile: {fileID: 11400000, guid: 1f83a715157b39e459d650c53a70f6f1, type: 2}
+    customManifest: {fileID: 0}
+    customGraddle: {fileID: 0}
+    lastBuildTime: 
+    lastBuildResult: 0
+    lastBuildVersion: 
+  - targetName: Vive
+    targetActive: 0
+    target: 13
+    targetBuildProfile: {fileID: 11400000, guid: 1c39559227d08384fba09e3b75abf8e3, type: 2}
+    customManifest: {fileID: 0}
+    customGraddle: {fileID: 0}
+    lastBuildTime: 
+    lastBuildResult: 0
+    lastBuildVersion: 
+  - targetName: Dedicated Server
+    targetActive: 0
+    target: 19
+    targetBuildProfile: {fileID: 11400000, guid: 34c58d2762ca0ad43978ca7da8289e99, type: 2}
+    customManifest: {fileID: 0}
+    customGraddle: {fileID: 0}
+    lastBuildTime: 
+    lastBuildResult: 0
+    lastBuildVersion: 
