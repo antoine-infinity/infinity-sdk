@@ -18,7 +18,7 @@ MonoBehaviour:
   serverIp: 192.168.129.203
   serverPort: 7778
   playAreaSize: 1
-  firstScene: Assets/Scenes/Lobby.unity
+  firstScene: Assets/Scenes/[DEBUG] KineticEngine.unity
   dualScreen: 0
   autoStart: 0
   autoStop: 0

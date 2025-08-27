@@ -21,11 +21,11 @@ MonoBehaviour:
     targetActive: 1
     target: 13
     targetBuildProfile: {fileID: 11400000, guid: 9d52fbd858a163943b017f5e025a9d18, type: 2}
-    customManifest: {fileID: 4900000, guid: 28d2e849c4924649bd10e95e7fd02891, type: 3}
+    customManifest: {fileID: 0}
     customGraddle: {fileID: 0}
-    lastBuildTime: 08/26/2025 23:01:49
+    lastBuildTime: 08/27/2025 15:21:59
     lastBuildResult: 1
-    lastBuildVersion: 0.0.1_13
+    lastBuildVersion: 0.0.1_29
   - targetName: Pico
     targetActive: 0
     target: 13
@@ -50,6 +50,6 @@ MonoBehaviour:
     targetBuildProfile: {fileID: 11400000, guid: 34c58d2762ca0ad43978ca7da8289e99, type: 2}
     customManifest: {fileID: 0}
     customGraddle: {fileID: 0}
-    lastBuildTime: 
-    lastBuildResult: 0
-    lastBuildVersion: 
+    lastBuildTime: 08/27/2025 13:43:05
+    lastBuildResult: 1
+    lastBuildVersion: 0.0.1

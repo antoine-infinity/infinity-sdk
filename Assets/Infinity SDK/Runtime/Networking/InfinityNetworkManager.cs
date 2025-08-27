@@ -11,8 +11,8 @@ namespace Infinity.Runtime.Networking
     {
         public static IEnumerable<NetworkClient> ConnectedClients => NetworkManager.Singleton.ConnectedClients.Values;
 
-        public static NetworkClient LocalClient;
-        public static InfinityPlayerRoot LocalPlayerRoot;
+        public static NetworkClient LocalClient => NetworkManager.Singleton.LocalClient;
+        public static InfinityPlayerRoot LocalPlayerRoot => LocalClient.PlayerObject?.GetComponent<InfinityPlayerRoot>();
 
         public static void Initialize()
         {
@@ -67,8 +67,6 @@ namespace Infinity.Runtime.Networking
         private static void OnClientStarted()
         {
             InfinityLog.Info(typeof(InfinityNetworkManager), $"Client Started");
-            LocalClient = NetworkManager.Singleton.LocalClient;
-            LocalPlayerRoot = LocalClient.PlayerObject.GetComponent<InfinityPlayerRoot>();
         }
 
         private static void OnServerStopped(bool obj)

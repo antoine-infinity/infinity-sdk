@@ -32,13 +32,22 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "IsTracked",
+                    "type": "Button",
+                    "id": "0d787d11-b744-48ba-973d-f303f187247c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "193a12fd-0773-479e-a298-c939e1c5ad9f",
-                    "path": "<XRHMD>/devicePosition",
+                    "path": "<XRHMD>/centerEyePosition",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -49,7 +58,7 @@
                 {
                     "name": "",
                     "id": "a041e8ec-8d81-4b51-a156-88d2529911c7",
-                    "path": "<XRHMD>/deviceRotation",
+                    "path": "<XRHMD>/centerEyeRotation",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -67,6 +76,17 @@
                     "action": "Tracking",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7993343d-bc5f-4b1d-acdb-7b08b9bbb6ff",
+                    "path": "<XRHMD>/isTracked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IsTracked",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -74,6 +94,24 @@
             "name": "Left Controller",
             "id": "56e315af-c83e-417d-a23c-2c59052048c5",
             "actions": [
+                {
+                    "name": "Tracking",
+                    "type": "Value",
+                    "id": "a9f0a7c5-35b6-4091-8203-7f3ebdaa6f04",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "IsTracked",
+                    "type": "Button",
+                    "id": "5fdf801c-e4b8-4d49-8958-4b8220476fc3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
                 {
                     "name": "Position",
                     "type": "Value",
@@ -88,15 +126,6 @@
                     "type": "Value",
                     "id": "73896080-128c-47f8-b1ae-42e18f07f2be",
                     "expectedControlType": "Quaternion",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Tracking",
-                    "type": "Value",
-                    "id": "a9f0a7c5-35b6-4091-8203-7f3ebdaa6f04",
-                    "expectedControlType": "Integer",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -153,6 +182,39 @@
                     "action": "Tracking",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a9d3169-a930-4b46-85e4-198089e0b130",
+                    "path": "<XRController>{LeftHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea7520dc-80d3-4fec-afd4-54b1c4003e38",
+                    "path": "<XRController>{LeftHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2841729e-9c50-44e8-8864-dfe695eff668",
+                    "path": "<XRController>{LeftHand}/isTracked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IsTracked",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -186,6 +248,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "IsTracked",
+                    "type": "Button",
+                    "id": "ee63d546-afc2-4d80-81f2-bcb4e83c362a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Grab",
@@ -243,7 +314,7 @@
                 {
                     "name": "",
                     "id": "007928d2-ccaa-458e-bb22-5bd948395c3e",
-                    "path": "",
+                    "path": "<XRController>{RightHand}/grip",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -254,11 +325,22 @@
                 {
                     "name": "",
                     "id": "72861cf3-fe17-4998-b711-bddecf5c8278",
-                    "path": "",
+                    "path": "<XRController>{RightHand}/trigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79a96de1-cfac-43dd-b8cb-6632befd6c8d",
+                    "path": "<XRController>{RightHand}/isTracked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IsTracked",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
