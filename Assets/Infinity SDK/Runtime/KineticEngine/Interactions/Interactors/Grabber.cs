@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Infinity.Runtime.Core.Logging;
+using Infinity.Runtime.KineticEngine.Interactions;
 using Infinity.Runtime.Utils;
 using Infinity.Runtime.XR.Interactions.Interactables;
 using UnityEngine;

@@ -1,6 +1,6 @@
 using System;
 
-namespace Infinity.Runtime.XR.Interactions
+namespace Infinity.Runtime.KineticEngine.Interactions
 {
     [Flags]
     public enum Handedness
