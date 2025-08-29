@@ -30,7 +30,6 @@ namespace Infinity.Runtime.Core
                 _sessionState = value;
             }
         }
-
         public static InfinitySDKProperties Properties { get; private set; }
         
         public static void Initialize()

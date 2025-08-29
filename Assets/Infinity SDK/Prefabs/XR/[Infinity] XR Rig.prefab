@@ -281,56 +281,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
---- !u!1 &2076292751094098358
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7522217273197062901}
-  - component: {fileID: 4048798119605835525}
-  m_Layer: 0
-  m_Name: Right Direct Interactor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7522217273197062901
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076292751094098358}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6348942471519976765}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4048798119605835525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076292751094098358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c67ac031ff924c48b7d3631dbb79f395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Infinity.SDK::Infinity.Runtime.KineticEngine.Interactions.DirectInteractor
-  interactableMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  grabRange: 0.2
-  handedness: 1
-  attachPoint: {fileID: 0}
 --- !u!1 &2521134085134489089
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +348,6 @@ Transform:
   - {fileID: 4040570210210735633}
   - {fileID: 402730533729384974}
   - {fileID: 1818681019623863138}
-  - {fileID: 6348942471519976765}
   m_Father: {fileID: 7282158424217773638}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7042339111935870963
@@ -418,6 +367,39 @@ MonoBehaviour:
   m_CameraFloorOffsetObject: {fileID: 0}
   m_RequestedTrackingOriginMode: 2
   m_CameraYOffset: 1.1176
+--- !u!1 &3450556435361384588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1863918669246368069}
+  m_Layer: 0
+  m_Name: '[Interactions]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1863918669246368069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3450556435361384588}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 716321989258827661}
+  - {fileID: 6386812988564449667}
+  m_Father: {fileID: 7282158424217773638}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3497620320183768932
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +411,7 @@ GameObject:
   - component: {fileID: 7282158424217773638}
   - component: {fileID: 829435534447121816}
   - component: {fileID: 7193406690426278256}
+  - component: {fileID: 1980247515670923579}
   m_Layer: 0
   m_Name: '[Infinity] XR Rig'
   m_TagString: Untagged
@@ -451,6 +434,7 @@ Transform:
   m_Children:
   - {fileID: 914168155365606598}
   - {fileID: 8975877993962033998}
+  - {fileID: 1863918669246368069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &829435534447121816
@@ -501,6 +485,54 @@ MonoBehaviour:
   remoteRightController: {fileID: 6476777220143884937}
   leftControllerRenderer: {fileID: 0}
   rightControllerRenderer: {fileID: 0}
+  leftControllerInteractor: {fileID: 1027171470721339078}
+  rightControllerInteractor: {fileID: 708185377500367634}
+--- !u!114 &1980247515670923579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497620320183768932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1 &3500129067586169341
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +655,6 @@ GameObject:
   - component: {fileID: 4270519076309376168}
   - component: {fileID: 31116280829419617}
   - component: {fileID: 1514792826449094744}
-  - component: {fileID: 4338315962842019373}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -702,27 +733,73 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4338315962842019373
-SphereCollider:
+--- !u!1 &4169872079620510625
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3683602280316844681}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6386812988564449667}
+  - component: {fileID: 708185377500367634}
+  - component: {fileID: 756572831196477536}
+  m_Layer: 0
+  m_Name: Right Controller Interactor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6386812988564449667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169872079620510625}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1863918669246368069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &708185377500367634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169872079620510625}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688f6691acba476883dbce28edd7304b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Infinity.SDK::Infinity.Runtime.KineticEngine.Interactions.SimpleInteractor
+  ShowTopMostFoldoutHeaderGroup: 1
+  gripAction: {fileID: 3745454418669052635, guid: c24aa0e7c703b0d479eb68e9762f1a39, type: 3}
+  triggerAction: {fileID: 8361716080699633417, guid: c24aa0e7c703b0d479eb68e9762f1a39, type: 3}
+  attachPoint: {fileID: 0}
+  interactionRadius: 0.2
+  interactionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  handedness: 1
+--- !u!114 &756572831196477536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169872079620510625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7857c5144664211a7e1371852eedf93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Infinity.SDK::Infinity.Runtime.Utils.FollowTransform
+  target: {fileID: 6476777220143884937}
 --- !u!1 &6170991723581270335
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,59 +1007,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
---- !u!1 &6726472543794878175
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6348942471519976765}
-  - component: {fileID: 894320347621322164}
-  m_Layer: 0
-  m_Name: Interaction Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6348942471519976765
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6726472543794878175}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7522217273197062901}
-  m_Father: {fileID: 914168155365606598}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &894320347621322164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6726472543794878175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54623f73193c4732962912622d12b5e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Infinity.SDK::Infinity.Runtime.KineticEngine.Interactions.InteractionManager
-  leftGrab: {fileID: 0}
-  leftTrigger: {fileID: 0}
-  leftGrabThreshold: 0.5
-  leftTriggerThreshold: 0.5
-  rightGrab: {fileID: 0}
-  rightTrigger: {fileID: 0}
-  rightGrabThreshold: 0.5
-  rightTriggerThreshold: 0.5
 --- !u!1 &6818394111655320912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,6 +1165,73 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!1 &7756618093317971562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 716321989258827661}
+  - component: {fileID: 1027171470721339078}
+  - component: {fileID: 3530808520364540276}
+  m_Layer: 0
+  m_Name: Left Controller Interactor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &716321989258827661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756618093317971562}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1863918669246368069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1027171470721339078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756618093317971562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688f6691acba476883dbce28edd7304b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Infinity.SDK::Infinity.Runtime.KineticEngine.Interactions.SimpleInteractor
+  ShowTopMostFoldoutHeaderGroup: 1
+  gripAction: {fileID: 6126785234620135722, guid: c24aa0e7c703b0d479eb68e9762f1a39, type: 3}
+  triggerAction: {fileID: 3729843028725718258, guid: c24aa0e7c703b0d479eb68e9762f1a39, type: 3}
+  attachPoint: {fileID: 0}
+  interactionRadius: 0.2
+  interactionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  handedness: 2
+--- !u!114 &3530808520364540276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756618093317971562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7857c5144664211a7e1371852eedf93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Infinity.SDK::Infinity.Runtime.Utils.FollowTransform
+  target: {fileID: 5998145075035009409}
 --- !u!1 &8088953398960383079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +1243,6 @@ GameObject:
   - component: {fileID: 3574953421708844066}
   - component: {fileID: 5213995725693295564}
   - component: {fileID: 421101875084375481}
-  - component: {fileID: 630894429317831947}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -1231,24 +1321,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &630894429317831947
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8088953398960383079}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}

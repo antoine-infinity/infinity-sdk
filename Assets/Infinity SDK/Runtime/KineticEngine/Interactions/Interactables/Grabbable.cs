@@ -1,55 +1,52 @@
-using UnityEngine;
-using UnityEngine.Events;
+using Infinity.Runtime.Core.Logging;
+using Infinity.Runtime.XR;
+using Unity.Netcode.Components;
 
-namespace Infinity.Runtime.XR.Interactions.Interactables
+namespace Infinity.Runtime.KineticEngine.Interactions
 {
-    [RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Collider))]
-    public class Grabbable : MonoBehaviour
+    public class Grabbable : Interactable
     {
-        private Rigidbody _rb;
+        public bool isGrabbed;
 
-        public UnityEvent hoverEnter;
-        public UnityEvent hoverExit;
-        public UnityEvent grabEnter;
-        public UnityEvent grabExit;
-
-        private bool _kinematic;
-        private bool _gravity;
-        
-        private void Awake()
+        public void LateUpdate()
         {
-            _rb = GetComponent<Rigidbody>();
+            if (IsOwner)
+            {
+                if (isGrabbed)
+                {
+                    InfinityLog.Info(this, $"{InfinityPlayerRoot.LocalPlayer.name} is grabbing {gameObject.name}");
+                    InfinityLog.Info(this, $"{interactorHandedness.Value}");
+                    var interactor = interactorHandedness.Value == Handedness.Left ? InfinityPlayerRoot.LocalPlayer.leftControllerInteractor : InfinityPlayerRoot.LocalPlayer.rightControllerInteractor;
+                    if (interactor)
+                    {
+                        transform.position = interactor.attachPoint.position;
+                        transform.rotation = interactor.attachPoint.rotation;
+                    }
+                }
+            }
+        }
+
+        public void DebugLocalPlayer()
+        {
+            InfinityLog.Info(this, $"Local Player: {InfinityPlayerRoot.LocalPlayer.name}");
+        }
+        
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
             
-            _kinematic = _rb.isKinematic;
-            _gravity = _rb.useGravity;
+            onInteracting.AddListener(Grab);
+            onIdle.AddListener(UnGrab);
         }
 
-        public void ToggleKinematic(bool state)
+        private void Grab()
         {
-            _rb.isKinematic = state;
+            isGrabbed = true;
         }
 
-        public void ToggleGravity(bool state)
+        private void UnGrab()
         {
-            _rb.useGravity = state;
-        }
-
-        public void ResetRigidbodyPreviousState()
-        {
-            _rb.isKinematic = _kinematic;
-            _rb.useGravity = _gravity;
-        }
-        
-        public void ApplyVelocity(Vector3 velocity, Vector3 angular)
-        {
-            _rb.linearVelocity = velocity;
-            _rb.angularVelocity = angular;
-        }
-
-        public void MoveTowards(Vector3 position, Quaternion rotation)
-        {
-            _rb.MovePosition(position);
-            _rb.MoveRotation(rotation);
+            isGrabbed = false;
         }
     }
 }

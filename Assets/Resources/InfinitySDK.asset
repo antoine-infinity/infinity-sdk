@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: InfinitySDK
   m_EditorClassIdentifier: 
   readSettingsFrom: 0
-  logSettingAfterInit: 1
+  logSettingAfterInit: 0
   instanceType: 1
   serverIp: 192.168.129.203
   serverPort: 7778

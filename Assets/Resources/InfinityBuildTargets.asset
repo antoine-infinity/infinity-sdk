@@ -23,9 +23,9 @@ MonoBehaviour:
     targetBuildProfile: {fileID: 11400000, guid: 9d52fbd858a163943b017f5e025a9d18, type: 2}
     customManifest: {fileID: 0}
     customGraddle: {fileID: 0}
-    lastBuildTime: 08/27/2025 15:21:59
+    lastBuildTime: 08/29/2025 12:42:44
     lastBuildResult: 1
-    lastBuildVersion: 0.0.1_29
+    lastBuildVersion: 0.0.1_46
   - targetName: Pico
     targetActive: 0
     target: 13
@@ -53,3 +53,12 @@ MonoBehaviour:
     lastBuildTime: 08/27/2025 13:43:05
     lastBuildResult: 1
     lastBuildVersion: 0.0.1
+  - targetName: Test Kinetic Local
+    targetActive: 0
+    target: 13
+    targetBuildProfile: {fileID: 11400000, guid: 418aa127e9b10484186197ad83a05143, type: 2}
+    customManifest: {fileID: 0}
+    customGraddle: {fileID: 0}
+    lastBuildTime: 08/28/2025 15:02:40
+    lastBuildResult: 1
+    lastBuildVersion: 0.0.1_29
